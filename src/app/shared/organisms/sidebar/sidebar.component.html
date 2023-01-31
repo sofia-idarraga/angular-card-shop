@@ -1,0 +1,13 @@
+<div class="bg-dark border-right p-3" id="sidebar">
+  <atom-sidebar-title [text]="title"></atom-sidebar-title>
+  <hr class="text-white" />
+  <div class="d-grid gap-2 col-6 mx-auto"></div>
+  <div class="list-group list-reset">
+    <div *ngFor="let item of items; let i = index">
+      <atom-sidebar-item
+        [routerLink]="routerLinks[i]"
+        [item]="item"
+      ></atom-sidebar-item>
+    </div>
+  </div>
+</div>

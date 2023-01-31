@@ -1,0 +1,7 @@
+<atom-card-title [title]="title"></atom-card-title>
+<atom-card-text [text]="description"></atom-card-text>
+<atom-card-text [text]="price"></atom-card-text>
+<atom-card-button
+  [text]="buttonText"
+  (eventCardButton)="emitCardButtonEvent()"
+></atom-card-button>
