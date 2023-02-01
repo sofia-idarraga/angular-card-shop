@@ -10,8 +10,8 @@ export class CardBodyComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input() src!: string;
   @Input() title!: string;
+  @Input() id!: string;
   @Input() description!: string;
   @Input() price!: string;
   @Input() buttonText!: string;

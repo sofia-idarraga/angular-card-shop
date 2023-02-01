@@ -10,6 +10,7 @@ export class CardComponent {
 
   @Input() src!: string;
   @Input() title!: string;
+  @Input() id!: string;
   @Input() description!: string;
   @Input() price!: string;
   @Input() buttonText!: string;

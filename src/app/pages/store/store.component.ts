@@ -4,7 +4,7 @@ import { FirestoreService } from "src/app/modules/core/services/firestore.servic
 
 @Component({
   selector: "app-store",
-  template: ` <p>store works!</p> `,
+  templateUrl: "./store.component.html",
   styles: [],
 })
 export class StoreComponent implements OnInit {
@@ -12,13 +12,32 @@ export class StoreComponent implements OnInit {
 
   ngOnInit(): void {
     /*
-    this.firestoreService.getCards().subscribe((c) => {
+    this.firestoreService.getSoldCards().subscribe((c) => {
       this.cards = c;
       console.log(c);
-      
     });
     */
+    //this.cards = this.cards.filter((c) => c.activeForSale != false);
   }
 
-  cards: Card[] = [];
+  cards: Card[] = [
+    {
+      uid: "11111",
+      name: "Card1",
+      description: "desc1",
+      price: 1111,
+      imageUrl: "https://picsum.photos/320/240?random",
+      activeForSale: true,
+      history: [],
+    },
+    {
+      uid: "11111",
+      name: "Card1",
+      description: "desc1",
+      price: 1111,
+      imageUrl: "https://picsum.photos/320/240?random",
+      activeForSale: false,
+      history: [],
+    },
+  ];
 }

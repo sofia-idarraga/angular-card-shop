@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Store</h2>
+  <hr />
+  <div class="d-flex align-content-around flex-wrap gap-3">
+    <div *ngFor="let card of cards">
+      <app-card
+        [src]="card.imageUrl"
+        id="ID: {{ card.uid }}"
+        [title]="card.name"
+        [description]="card.description"
+        price="{{ card.price.toString() | currency }}"
+        buttonText="Buy"
+      ></app-card>
+    </div>
+  </div>
+</div>

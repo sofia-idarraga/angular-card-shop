@@ -1,6 +1,9 @@
 <div class="bg-dark border-right p-3" id="sidebar">
   <atom-sidebar-title [text]="title"></atom-sidebar-title>
   <hr class="text-white" />
+  <atom-sidebar-balance-text
+    text="Balance: {{ currentAppUser?.balance }}"
+  ></atom-sidebar-balance-text>
   <div class="d-grid gap-2 col-6 mx-auto"></div>
   <div class="list-group list-reset">
     <div *ngFor="let item of items; let i = index">
@@ -10,4 +13,11 @@
       ></atom-sidebar-item>
     </div>
   </div>
+  <hr class="text-white" />
+  <atom-auth-button
+    buttonClass="btn btn-outline-danger"
+    iconClass="bi bi-arrow-left-square"
+    text="Log Out"
+    (buttonEvent)="logout()"
+  ></atom-auth-button>
 </div>

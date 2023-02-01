@@ -1,12 +1,18 @@
 import { NgModule } from "@angular/core";
+import { canActivate, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
 import { RouterModule, Routes } from "@angular/router";
-import { CardComponent } from "./shared/organisms/card/card.component";
 
 const routes: Routes = [
   {
     path: "page",
     loadChildren: () =>
       import("./pages/pages.module").then((m) => m.PagesModule),
+    ...canActivate(() => redirectUnauthorizedTo(["/auth/login"])),
+  },
+  {
+    path: "auth",
+    loadChildren: () =>
+      import("./modules/auth/auth.module").then((m) => m.AuthModule),
   },
   {
     path: "**",
