@@ -1,3 +1,4 @@
+import { UpdateCard } from "./../domain/dto/updateCardDto";
 import { Card } from "./../domain/entities/card.model";
 import { Injectable } from "@angular/core";
 import {
@@ -6,6 +7,8 @@ import {
   Firestore,
   orderBy,
   where,
+  doc,
+  updateDoc,
 } from "@angular/fire/firestore";
 import { collection, query } from "@firebase/firestore";
 import { Observable } from "rxjs";
@@ -27,11 +30,11 @@ export class FirestoreService {
     return collectionData(q, { idField: "uid" }) as Observable<Card[]>;
   }
 
-  getSoldCards(): Observable<Card[]> {
+  getUnsoldCards(): Observable<Card[]> {
     const userRef = collection(this.firestore, "rickAndMorty");
     const q = query(
       userRef,
-      where("activeForSale", "==", false),
+      where("activeForSale", "==", true),
       orderBy("name")
     );
     return collectionData(q, { idField: "uid" }) as Observable<Card[]>;
@@ -74,5 +77,28 @@ export class FirestoreService {
     console.log("created");
     this.currentAppUser = newUser;
     return newUser;
+  }
+
+  updateCard(card: Card, user: UserModel) {
+    const cardRef = doc(this.firestore, `rickAndMorty/${card.uid}`);
+    updateDoc(cardRef, {
+      name: card.name,
+      description: card.description,
+      price: card.price,
+      imageUrl: card.imageUrl,
+      activeForSale: false,
+      history: [],
+    }).then(() => {
+      console.log("card updated");
+      this.updateUser(user, card);
+    });
+  }
+  updateUser(user: UserModel, card: Card) {
+    const userRef = doc(this.firestore, `users/${user.uid}`);
+    user.deck?.push(card);
+    updateDoc(userRef, {
+      balance: user.balance! - card.price,
+      deck: user.deck,
+    });
   }
 }

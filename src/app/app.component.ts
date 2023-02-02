@@ -20,7 +20,7 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   items = ["Cards Store", "My Cards", "Recharge", "Send Cards"];
-  links = ["/page/store", "/page/cards", "/page/recharge", "/page/send"];
+  links = ["/page/store", "/page/mycards", "/page/recharge", "/page/send"];
   title = "Cards Shop";
 
   constructor(public router: Router) {}

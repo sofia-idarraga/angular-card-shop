@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Card } from "src/app/modules/core/domain/entities/card.model";
 import { FirestoreService } from "src/app/modules/core/services/firestore.service";
+import { User as UserModel } from "src/app/modules/core/domain/entities/user.model";
 
 @Component({
   selector: "app-store",
@@ -11,14 +12,24 @@ export class StoreComponent implements OnInit {
   constructor(private firestoreService: FirestoreService) {}
 
   ngOnInit(): void {
-    /*
-    this.firestoreService.getSoldCards().subscribe((c) => {
-      this.cards = c;
-      console.log(c);
-    });
-    */
-    //this.cards = this.cards.filter((c) => c.activeForSale != false);
+    // this.firestoreService.getUnsoldCards().subscribe((c) => {
+    //   this.cards = c;
+    // });
+    // this.firestoreService.getAppUser().subscribe((doc) => {
+    //   this.currentAppUser = doc[0];
+    // });
+    // this.cards = this.cards.filter((c) => c.activeForSale != false);
+    //this.firestoreService.getDoc();
   }
+
+  currentAppUser: UserModel = {
+    uid: "11111",
+    email: "s@email.com",
+    avatar: "",
+    balance: 0,
+    deck: [],
+    recharges: [],
+  };
 
   cards: Card[] = [
     {
@@ -40,4 +51,12 @@ export class StoreComponent implements OnInit {
       history: [],
     },
   ];
+
+  buyCard(card: Card) {
+    if (this.currentAppUser.balance! < card.price) {
+      alert(`You don't have enough money to buy card # ${card.uid} `);
+      return;
+    }
+    this.firestoreService.updateCard(card, this.currentAppUser);
+  }
 }

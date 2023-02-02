@@ -4,10 +4,11 @@ import { CardComponent } from "./card/card.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { AtomsModule } from "../atoms/atoms.module";
 import { MoleculesModule } from "../molecules/molecules.module";
+import { MyCardComponent } from "./my-card/my-card.component";
 
 @NgModule({
-  declarations: [CardComponent, SidebarComponent],
+  declarations: [CardComponent, SidebarComponent, MyCardComponent],
   imports: [CommonModule, AtomsModule, MoleculesModule],
-  exports: [CardComponent, SidebarComponent],
+  exports: [CardComponent, SidebarComponent, MyCardComponent],
 })
 export class OrganismsModule {}
