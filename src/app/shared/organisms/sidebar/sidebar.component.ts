@@ -20,9 +20,9 @@ export class SidebarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.$firestoreService.getAppUser().subscribe((doc) => {
-    //   this.currentAppUser = doc[0];
-    // });
+    this.$firestoreService.getAppUser().subscribe((doc) => {
+      this.currentAppUser = doc[0];
+    });
   }
 
   currentAppUser?: UserModel;

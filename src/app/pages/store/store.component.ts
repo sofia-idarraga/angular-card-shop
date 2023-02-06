@@ -19,7 +19,7 @@ export class StoreComponent implements OnInit {
     //   this.currentAppUser = doc[0];
     // });
     // this.cards = this.cards.filter((c) => c.activeForSale != false);
-    //this.firestoreService.getDoc();
+    // this.firestoreService.getDoc();
   }
 
   currentAppUser: UserModel = {

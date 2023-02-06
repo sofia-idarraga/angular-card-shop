@@ -5,10 +5,22 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 import { AtomsModule } from "../atoms/atoms.module";
 import { MoleculesModule } from "../molecules/molecules.module";
 import { MyCardComponent } from "./my-card/my-card.component";
+import { RechargeFormComponent } from "./recharge-form/recharge-form.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [CardComponent, SidebarComponent, MyCardComponent],
-  imports: [CommonModule, AtomsModule, MoleculesModule],
-  exports: [CardComponent, SidebarComponent, MyCardComponent],
+  declarations: [
+    CardComponent,
+    SidebarComponent,
+    MyCardComponent,
+    RechargeFormComponent,
+  ],
+  imports: [CommonModule, AtomsModule, MoleculesModule, FormsModule],
+  exports: [
+    CardComponent,
+    SidebarComponent,
+    MyCardComponent,
+    RechargeFormComponent,
+  ],
 })
 export class OrganismsModule {}

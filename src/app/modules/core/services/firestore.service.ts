@@ -1,4 +1,3 @@
-import { UpdateCard } from "./../domain/dto/updateCardDto";
 import { Card } from "./../domain/entities/card.model";
 import { Injectable } from "@angular/core";
 import {
@@ -99,6 +98,13 @@ export class FirestoreService {
     updateDoc(userRef, {
       balance: user.balance! - card.price,
       deck: user.deck,
+    });
+  }
+
+  updateUserBalance(user: UserModel, newBalance: number) {
+    const userRef = doc(this.firestore, `users/${user.uid}`);
+    updateDoc(userRef, {
+      balance: newBalance,
     });
   }
 }

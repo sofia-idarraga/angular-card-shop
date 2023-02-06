@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "page",
+    redirectTo: "auth/login",
   },
 ];
 

@@ -19,8 +19,8 @@ import { Router } from "@angular/router";
   styles: [],
 })
 export class AppComponent {
-  items = ["Cards Store", "My Cards", "Recharge", "Send Cards"];
-  links = ["/page/store", "/page/mycards", "/page/recharge", "/page/send"];
+  items = ["Cards Store", "My Cards", "Recharge"];
+  links = ["/page/store", "/page/mycards", "/page/recharge"];
   title = "Cards Shop";
 
   constructor(public router: Router) {}
