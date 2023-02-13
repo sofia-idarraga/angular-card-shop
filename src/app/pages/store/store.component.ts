@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Card } from "src/app/modules/core/domain/entities/card.model";
 import { FirestoreService } from "src/app/modules/core/services/firestore.service";
 import { User as UserModel } from "src/app/modules/core/domain/entities/user.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-store",
@@ -19,7 +20,6 @@ export class StoreComponent implements OnInit {
     //   this.currentAppUser = doc[0];
     // });
     // this.cards = this.cards.filter((c) => c.activeForSale != false);
-    // this.firestoreService.getDoc();
   }
 
   currentAppUser: UserModel = {
@@ -52,11 +52,17 @@ export class StoreComponent implements OnInit {
     },
   ];
 
-  buyCard(card: Card) {
+  buyCard(card: Card): void {
     if (this.currentAppUser.balance! < card.price) {
-      alert(`You don't have enough money to buy card # ${card.uid} `);
+      Swal.fire(
+        "",
+        `You don't have enough money to buy card # ${card.uid} `,
+        "error"
+      );
+
       return;
     }
+    Swal.fire("", `Card # ${card.uid} added to your deck`, "success");
     this.firestoreService.updateCard(card, this.currentAppUser);
   }
 }

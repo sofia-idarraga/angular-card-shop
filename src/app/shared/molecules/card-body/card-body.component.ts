@@ -15,7 +15,7 @@ export class CardBodyComponent implements OnInit {
   @Input() description!: string;
   @Input() price!: string;
   @Input() buttonText!: string;
-  @Output() eventCardButton = new EventEmitter();
+  @Output() eventCardButton: EventEmitter<void> = new EventEmitter<void>();
 
   emitCardButtonEvent(): void {
     this.eventCardButton.emit();

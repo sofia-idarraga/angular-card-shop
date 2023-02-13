@@ -14,7 +14,7 @@ export class CardComponent {
   @Input() description!: string;
   @Input() price!: string;
   @Input() buttonText!: string;
-  @Output() eventCardButton = new EventEmitter();
+  @Output() eventCardButton: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit(): void {}
 

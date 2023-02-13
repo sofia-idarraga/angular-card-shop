@@ -4,6 +4,8 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
+  UserCredential,
+  User,
 } from "@angular/fire/auth";
 
 @Injectable({
@@ -12,15 +14,15 @@ import {
 export class AuthService {
   constructor(private auth: Auth) {}
 
-  loginWithGoogle() {
+  loginWithGoogle(): Promise<UserCredential> {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
-  logOut() {
+  logOut(): Promise<void> {
     return signOut(this.auth);
   }
 
-  getCurrentUser() {
+  getCurrentUser(): User | null {
     return this.auth.currentUser;
   }
 }

@@ -16,8 +16,8 @@ export class RechargeFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Output() eventRechargeButton = new EventEmitter();
-  @Output() emitInputChange = new EventEmitter();
+  @Output() eventRechargeButton: EventEmitter<void> = new EventEmitter<void>();
+  @Output() emitInputChange: EventEmitter<number> = new EventEmitter<number>();
 
   submit() {
     this.eventRechargeButton.emit();

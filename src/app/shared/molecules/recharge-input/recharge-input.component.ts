@@ -18,7 +18,7 @@ export class RechargeInputComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Output() emitInputChange = new EventEmitter();
+  @Output() emitInputChange: EventEmitter<number> = new EventEmitter<number>();
 
   change($event: number) {
     this.emitInputChange.emit($event);

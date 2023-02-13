@@ -2,7 +2,7 @@
   <atom-sidebar-title [text]="title"></atom-sidebar-title>
   <hr class="text-white" />
   <atom-sidebar-balance-text
-    text="Balance: {{ currentAppUser?.balance }}"
+    text="Balance: {{ currentAppUser?.balance | currency }}"
   ></atom-sidebar-balance-text>
   <div class="d-grid gap-2 col-6 mx-auto"></div>
   <div class="list-group list-reset">

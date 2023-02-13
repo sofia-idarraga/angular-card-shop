@@ -78,7 +78,7 @@ export class FirestoreService {
     return newUser;
   }
 
-  updateCard(card: Card, user: UserModel) {
+  updateCard(card: Card, user: UserModel): void {
     const cardRef = doc(this.firestore, `rickAndMorty/${card.uid}`);
     updateDoc(cardRef, {
       name: card.name,
@@ -92,7 +92,7 @@ export class FirestoreService {
       this.updateUser(user, card);
     });
   }
-  updateUser(user: UserModel, card: Card) {
+  updateUser(user: UserModel, card: Card): void {
     const userRef = doc(this.firestore, `users/${user.uid}`);
     user.deck?.push(card);
     updateDoc(userRef, {
@@ -101,7 +101,7 @@ export class FirestoreService {
     });
   }
 
-  updateUserBalance(user: UserModel, newBalance: number) {
+  updateUserBalance(user: UserModel, newBalance: number): void {
     const userRef = doc(this.firestore, `users/${user.uid}`);
     updateDoc(userRef, {
       balance: newBalance,

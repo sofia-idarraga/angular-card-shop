@@ -16,7 +16,7 @@ export class AuthButtonComponent implements OnInit {
   @Input() buttonClass!: string;
   @Input() iconClass!: string;
   @Input() text!: string;
-  @Output() buttonEvent = new EventEmitter();
+  @Output() buttonEvent: EventEmitter<void> = new EventEmitter<void>();
 
   buttonAction() {
     this.buttonEvent.emit();

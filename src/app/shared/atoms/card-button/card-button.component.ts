@@ -11,7 +11,7 @@ export class CardButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() text!: string;
-  @Output() eventCardButton = new EventEmitter();
+  @Output() eventCardButton: EventEmitter<void> = new EventEmitter<void>();
 
   click(): void {
     this.eventCardButton.emit();
