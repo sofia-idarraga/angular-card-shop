@@ -13,13 +13,13 @@ export class StoreComponent implements OnInit {
   constructor(private firestoreService: FirestoreService) {}
 
   ngOnInit(): void {
-    // this.firestoreService.getUnsoldCards().subscribe((c) => {
-    //   this.cards = c;
-    // });
-    // this.firestoreService.getAppUser().subscribe((doc) => {
-    //   this.currentAppUser = doc[0];
-    // });
-    // this.cards = this.cards.filter((c) => c.activeForSale != false);
+    this.firestoreService.getUnsoldCards().subscribe((c) => {
+      this.cards = c;
+    });
+    this.firestoreService.getAppUser().subscribe((doc) => {
+      this.currentAppUser = doc[0];
+    });
+    this.cards = this.cards.filter((c) => c.activeForSale != false);
   }
 
   currentAppUser: UserModel = {

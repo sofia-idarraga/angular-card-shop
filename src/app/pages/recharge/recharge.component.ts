@@ -12,9 +12,9 @@ export class RechargeComponent implements OnInit {
   constructor(private $firestoreService: FirestoreService) {}
 
   ngOnInit(): void {
-    // this.$firestoreService.getAppUser().subscribe((doc) => {
-    //   this.currentAppUser = doc[0];
-    // });
+    this.$firestoreService.getAppUser().subscribe((doc) => {
+      this.currentAppUser = doc[0];
+    });
   }
 
   currentAppUser!: UserModel;
@@ -25,7 +25,7 @@ export class RechargeComponent implements OnInit {
 
     if (this.checkValue()) {
       const newBalance = this.currentAppUser.balance! + this.rechargeValue;
-      // this.$firestoreService.updateUserBalance(this.currentAppUser, newBalance);
+      this.$firestoreService.updateUserBalance(this.currentAppUser, newBalance);
       Swal.fire("", `Recharge done, new balance: $ ${newBalance}`, "success");
     } else {
       Swal.fire("", "Recharge must be between $1 and $2000", "error");

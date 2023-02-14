@@ -12,10 +12,10 @@ export class MyCardsComponent implements OnInit {
   constructor(private firestoreService: FirestoreService) {}
 
   ngOnInit(): void {
-    // this.firestoreService.getAppUser().subscribe((doc) => {
-    //   this.currentAppUser = doc[0];
-    //   this.cards = this.currentAppUser.deck!;
-    // });
+    this.firestoreService.getAppUser().subscribe((doc) => {
+      this.currentAppUser = doc[0];
+      this.cards = this.currentAppUser.deck!;
+    });
   }
 
   currentAppUser!: UserModel;
